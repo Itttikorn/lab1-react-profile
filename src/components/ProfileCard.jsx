@@ -4,12 +4,22 @@ function ProfileCard({ name, role, bio, profilePicture }) {
     const [likes, setLikes] = useState(0);
     const [skills, setSkills] = useState(['React', 'JavaScript']);
     const [newSkill, setNewSkill] = useState('');
+    const [searchTerm, setSearchTerm] = useState('');
 
     const addSkill = () => {
         if (newSkill.trim() !== '') {
             setSkills([...skills, newSkill]);
             setNewSkill('');
         }
+    };
+
+    const filteredSkills = skills.filter(skill =>
+        skill.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+
+    const deleteSkill = (indexToDelete) => {
+        const updatedSkills = skills.filter((_, index) => index !== indexToDelete);
+        setSkills(updatedSkills);
     };
 
     return (
@@ -21,9 +31,15 @@ function ProfileCard({ name, role, bio, profilePicture }) {
 
             <div style={{ marginTop: '30px' }}>
                 <h2>Skills</h2>
+                <input type="text" value={searchTerm} placeholder='Search skills' onChange={(e) => setSearchTerm(e.target.value)}></input>
                 <ul>
-                    {skills.map((skill, index) => (
-                        <li key={index}>{skill}</li>
+                    {filteredSkills.map((skill, index) => (
+                        <li key={index}>
+                            {skill}
+                            <span className="material-symbols-outlined" onClick={() => deleteSkill(index)} style={{ cursor: 'pointer', marginLeft: '10px' }}>
+                                delete
+                            </span>
+                            </li>
                     ))}
                 </ul>
                 <input
