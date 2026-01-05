@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import TopBar from './components/TopBar.jsx'
 import ProfileCard from './components/ProfileCard.jsx'
 
 function App() {
@@ -31,7 +32,8 @@ function App() {
   }, []);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', marginTop: '50px', textAlign: 'center' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+      <TopBar />
       <h1>My First React App</h1>
 
       {loading ? (
