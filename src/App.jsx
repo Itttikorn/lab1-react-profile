@@ -23,6 +23,7 @@ function App() {
           name={githubData.name || githubData.login}
           role="GitHub User"
           bio={githubData.bio || "No bio available"}
+          profilePicture={githubData.avatar_url}
         />
       ) : (
         <p>Loading data from GitHub...</p>
