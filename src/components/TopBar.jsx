@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 function TopBar() {
-    const [darkMode, setDarkMode] = useState(localStorage.getItem('theme'));
+    const [darkMode, setDarkMode] = useState(localStorage.getItem('theme') === 'true');
 
     useEffect(() => {
         if (darkMode) {
