@@ -34,7 +34,7 @@ function ProfileCard({ name, role, bio, profilePicture }) {
                 <input type="text" value={searchTerm} placeholder='Search skills' onChange={(e) => setSearchTerm(e.target.value)}></input>
                 <ul>
                     {filteredSkills.map((skill, index) => (
-                        <li key={index}>
+                        <li key={index} style={{color: document.body.classList.contains('dark') ? (skill.includes('React') ? 'cyan' : 'white') : skill.includes('React') ? 'blue' : 'black'}}>
                             {skill}
                             <span className="material-symbols-outlined" onClick={() => deleteSkill(index)} style={{ cursor: 'pointer', marginLeft: '10px' }}>
                                 delete
